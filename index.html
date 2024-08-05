@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Frontend Mentor | [chat-app-css-illustration-master]</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Rubik", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: hsl(270, 20%, 96%);
+      padding: 1rem;
+    }
+    body::before{
+      content: "";
+      position: fixed;
+      transform: translateX(-150%);
+      top: 0;
+      height: 90%;
+      width: 30%;
+      border-bottom-left-radius: 20em;
+      border-bottom-right-radius: 20em;
+      background: linear-gradient(hsl(293, 100%, 63%), hsl(264, 100%, 61%));
+      z-index: -1;
+    }
+       body::after{
+      content: "";
+      position: fixed;
+      transform: translateX(150%);
+      bottom: 0;
+      height: 90%;
+      width: 30%;
+      border-top-left-radius: 20em;
+      border-top-right-radius: 20em;
+      background: linear-gradient(hsl(293, 100%, 63%), hsl(264, 100%, 61%));
+      z-index: -1;
+      opacity: .04;
+    }
+    main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+    #content{
+      border: 10px solid hsl(0, 0%, 100%);
+      background: hsl(270, 20%, 96%);
+      border-radius: 45px;
+      position: relative;
+      margin-bottom: 5em;
+      width: min(95%, 400px);
+      box-shadow: 10px 10px 20px hsla(0, 0%, 0%, .1);
+      overflow: hidden;
+    }
+    #content::before{
+      content: "y";
+      position: absolute;
+      background: hsl(0, 0%, 100%);
+      color: hsl(0, 0%, 100%);
+      transform: translateY(-.1em);
+      z-index: 2;
+      top: 0;
+      left: 25%;
+      right: 25%;
+      height: 30px;
+      border-bottom-right-radius: 1em;
+      border-bottom-left-radius: 1em;
+    }
+    #sub-heading{
+      display: flex;
+      align-items: center;
+      gap: .5em;
+      width: 100%;
+      background: linear-gradient(to right, hsl(264, 100%, 61%) 60%, hsl(293, 100%, 63%));
+      border-radius: calc(45px - 10px);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      object-fit: contet;
+      padding: 3em 10px 10px 10px;
+      color: hsl(276, 100%, 81%);
+      white-space: nowrap;
+      position: relative;
+      z-index: 1;
+    }
+    #sub-heading div{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      column-gap: 10px;
+      width: 99%;
+    }
+    #sub-heading img{
+      height: 3.5em;
+      width: 3.5em;
+      border-radius: 100%;
+      border: .1em solid hsl(0, 0%, 100%);
+    }
+    #know h1{
+      text-align: center;
+      color: hsl(271, 36%, 24%);
+      font-weight: 700;
+      margin-bottom: .8em;
+    }
+    #chat{
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+    }
+    #chat p, #chat div:not(#response){
+      animation: flow 1s forwards;
+    }
+    @keyframes flow{
+      from{
+        transform: translateY(-1000px);
+      }
+      to{
+        transform: translateY(0);
+      }
+    }
+    .chat-on-the-left{
+      color: hsl(276, 55%, 52%);
+      background: hsl(276, 100%, 96%);
+      padding: .5em;
+      width: 70%;
+      margin-bottom: 10px;
+      border-radius: 1em;
+    }
+    .chat-on-the-right:not(#img){
+      background: hsl(0, 0%, 100%);
+      margin-bottom: 10px;
+    }
+    .chat-on-the-right{
+      align-self: flex-end;
+      padding: .5em;
+      border-radius: 1em;
+    }
+    #img{
+      margin-top: 10px;
+      display: flex;
+      column-gap: 5px;
+      margin-bottom: 5px;
+    }
+    #img img{
+      height: 65px;
+      width: 65px;
+      border-radius: 1em;
+    }
+    .chat-on-the-left.pricing{
+      background: linear-gradient(to right, hsl(293, 100%, 63%), hsl(264, 100%, 61%));
+      display: flex;
+      padding: 20px 20px;
+      gap: 5px;
+      width: 85%;
+      color: hsl(276, 100%, 81%);
+      align-items: center;
+    }
+    .chat-on-the-left.pricing strong{
+      font-size: 20px;
+      color: white;
+      margin-left: auto;
+    }
+    #response{
+      width: 100%;
+      background: hsl(0, 0%, 100%);
+      padding: .8em;
+      border-radius: 4rem;
+      display: flex;
+      justify-content: space-between;
+      color: hsl(206, 6%, 79%);
+    }
+    #response input, 
+    #response input:focus{
+      background: none;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      width: 70%;
+    }
+    #response button{
+      background: hsl(271, 36%, 24%);
+      color: hsl(206, 6%, 79%);
+      border-radius: 100%;
+      border: none;
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      align-self: flex-end;
+    }
+    #know{
+        width: min(80%, 600px);
+    }
+    #know p{
+      text-align: center;
+      color: hsl(270, 7%, 64%);
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    @media screen and (min-width: 1440px){
+      main{
+        flex-direction: row;
+        column-gap: 8em;
+      }
+      #know h1, #know p{
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="content">
+      <header id="sub-heading">
+        <i class='bx bx-chevron-left'></i>
+        <div>
+          <img src="./images/avatar.jpg">
+          <span>
+            <strong><p>Samuel Green</p></strong>
+            <p>Available to Walk</p>
+          </span>
+        </div>
+        <i class='bx bx-dots-vertical-rounded'></i>
+      </header>
+      <div id="chat">
+        <p class="chat-on-the-left">
+          That sounds great. I’d be happy with that.
+        </p>
+        <p class="chat-on-the-left">
+          Could you send over some pictures of your dog, please?
+        </p>
+        <div id="img" class="chat-on-the-right">
+          <img src="./images/dog-image-1.jpg">
+          <img src="./images/dog-image-2.jpg">
+          <img src="./images/dog-image-3.jpg">
+        </div>
+        <p class="chat-on-the-right">
+          Here are a few pictures. She’s<br> a happy girl!
+        </p>
+        <p class="chat-on-the-right">
+          Can you make it?
+        </p>
+        <p class="chat-on-the-left">
+          She looks so happy! The time we discussed works. How long shall I take her out for?
+        </p>
+        <p class="chat-on-the-left pricing">
+          <input type="radio" name="price">30 minute walk <strong>$29</strong>
+        </p>
+        <p class="chat-on-the-left pricing">
+          <input type="radio" name="price">1 hour walk <strong>$49</strong>
+        </p>
+        <div id="response">
+          <input type="text"  name="response" placeholder="Type a message...">
+          <button>
+            <i class='bx bx-chevron-right'></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <div id="know">
+      <h1>Simple booking</h1>
+      <p>
+        Stay in touch with our dog walkers through the chat interface. This makes it easy to discuss arrangements and make bookings. Once the walk has been completed you can rate your walker and book again all through the chat.
+      </p>
+    </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.frontendmentor.io/profile/lord-ace">Ashinze Emmanuel</a>.
+  </div>
+</body>
+</html>
